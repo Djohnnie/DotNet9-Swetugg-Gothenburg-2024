@@ -1,4 +1,6 @@
-﻿
+﻿Console.WriteLine("Hello World!");
+
+
 // Partial classes
 
 partial class MyPartialClass

@@ -26,13 +26,11 @@ static void DoSomethingFourth(params MyClass values)
 {
 }
 
-
-
 class MyClass : IEnumerable<int>
 {
     public void Add(int value)
     {
-        // NOP.
+        // NOP
     }
 
     public IEnumerator<int> GetEnumerator()

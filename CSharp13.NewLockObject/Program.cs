@@ -15,6 +15,12 @@ Monitor.Exit(lockObject);
 // New System.Threading.Lock object
 var l = new Lock();
 
+// Used like new Lock EnterScope.
+using (l.EnterScope())
+{
+    // ...
+}
+
 // Used as lock object (and translated to new Lock by compiler)
 lock (l)
 {
@@ -22,12 +28,6 @@ lock (l)
 }
 
 lock ((object)l)
-{
-    // ...
-}
-
-// Used like new Lock EnterScope.
-using (l.EnterScope())
 {
     // ...
 }
