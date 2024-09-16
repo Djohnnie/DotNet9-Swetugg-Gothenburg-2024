@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Schema;
 
 
 var options = new JsonSerializerOptions
@@ -16,3 +17,26 @@ Console.WriteLine();
 Console.WriteLine(json2);
 
 Console.ReadKey();
+
+Console.WriteLine();
+Console.WriteLine();
+
+var schema = JsonSchemaExporter.GetJsonSchemaAsNode(JsonSerializerOptions.Default, typeof(Person));
+Console.WriteLine(schema);
+
+Console.ReadKey();
+
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string[] Hobbies { get; set; }
+    public Address Address { get; set; }
+}
+
+public class Address
+{
+    public string Street { get; set; }
+    public string City { get; set; }
+    public string Zip { get; set; }
+}
