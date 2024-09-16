@@ -1,7 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
+
+
 if (Feature.IsSupported)
     Feature.Implementation();
+
+
 
 public class Feature
 {

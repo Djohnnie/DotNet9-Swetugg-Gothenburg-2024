@@ -18,7 +18,7 @@ KeyValuePair<string, int> mostFrequentWord1 = sourceText
     .Split(splitChars, StringSplitOptions.RemoveEmptyEntries)
     .Select(word => word.ToLowerInvariant())
     .GroupBy(word => word)
-    .ToDictionary(x => x.Key, x => x.Count())
+    .ToDictionary(group => group.Key, group => group.Count())
     .MaxBy(pair => pair.Value);
 
 Console.WriteLine(mostFrequentWord1.Key);
@@ -40,22 +40,24 @@ Console.WriteLine(mostFrequentWord2.Key);
 
 var data = new List<Temp>
 {
-    new Temp{ Key = "0", Value = 42 },
-    new Temp{ Key = "1", Value = 5 },
-    new Temp{ Key = "2", Value = 4 },
-    new Temp{ Key = "1", Value = 10 },
-    new Temp{ Key = "0", Value = 25 }
+    new Temp { Key = "0", Value = 42 },
+    new Temp { Key = "1", Value = 5 },
+    new Temp { Key = "2", Value = 4 },
+    new Temp { Key = "1", Value = 10 },
+    new Temp { Key = "0", Value = 25 }
 };
 
-var result1 = data.GroupBy(keySelector: entry => entry.Key)
-                    .ToDictionary(x => x.Key, x => x.Aggregate(seed: 0, (totalScore, curr) => totalScore + curr.Value));
+var result1 = data
+    .GroupBy(keySelector: entry => entry.Key)
+    .ToDictionary(x => x.Key, x => x.Aggregate(seed: 0, (totalScore, curr) => totalScore + curr.Value));
 
 foreach (var pair in result1)
 {
     Console.WriteLine($"({pair.Key}, {pair.Value})");
 }
 
-var result2 = data.AggregateBy(keySelector: entry => entry.Key, seed: 0, (totalScore, curr) => totalScore + curr.Value);
+var result2 = data
+    .AggregateBy(keySelector: entry => entry.Key, seed: 0, (totalScore, curr) => totalScore + curr.Value);
 
 foreach (var pair in result2)
 {

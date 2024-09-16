@@ -4,13 +4,13 @@
 
 var zlibCompressionOptions = new ZLibCompressionOptions
 {
-    CompressionLevel = 1,
+    CompressionLevel = 1, // -1..9,
     CompressionStrategy = ZLibCompressionStrategy.Default,
 };
 
 var brotliCompressionOptions = new BrotliCompressionOptions
 {
-    Quality = 1
+    Quality = 5 // 1..11
 };
 
 using var file = new FileStream("file.txt", FileMode.Open);

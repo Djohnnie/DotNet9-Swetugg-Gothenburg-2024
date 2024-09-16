@@ -1,4 +1,5 @@
 ﻿
+
 var prioQueue = new PriorityQueue<string, int>();
 prioQueue.Enqueue("A", 1);
 prioQueue.Enqueue("B", 2);

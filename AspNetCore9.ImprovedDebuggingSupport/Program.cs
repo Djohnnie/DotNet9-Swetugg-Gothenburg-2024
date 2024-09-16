@@ -30,7 +30,10 @@ public class DebuggingMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public DebuggingMiddleware(RequestDelegate next) { }
+    public DebuggingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
 
     public async Task InvokeAsync(HttpContext context)
     {
